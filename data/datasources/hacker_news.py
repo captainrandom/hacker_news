@@ -16,33 +16,43 @@ class HackerNewsDatasource(object):
 
     def get_story(self, id):
         """Fetches and returns a story."""
-        raise NotImplementedError()
-
+        response = requests.get(
+            'https://hacker-news.firebaseio.com/v0/item/{}.json'.format(id)
+        )
+        response_json = response.json()
+        return response_json
+       # return response.json()
     def get_top_stories(self):
         """Fetches and returns top stories."""
         raise NotImplementedError()
 
 
 class HackerNewsItem(Item):
-    """Represents a Giphy Item."""
+    """Represents a HackerNews Item."""
 
     def get_name(self):
-        print self.data
+        return self.data
 
-    # def get_description(self):
-    #     return 'rating: {} imported: {}'.format(
-    #         self.data.get('rating', 'n/a'),
-    #         self.data.get('import_datetime', ''))
+    def get_description(self):
+        return  self.data
 
     # def get_url(self):
     #     return self.data.get('url', '')
 
 
 class HackerNewsItems(Items):
-    """Represent trending gifs from Giphy."""
+    """Represent trending stories from HackerNews."""
     item_cls = HackerNewsItem
 
     def get_data(self):
+        story = []
         hackernews_datasource = HackerNewsDatasource()
         response_json = hackernews_datasource.get_topstory_ids()
-        return response_json
+        for ids in response_json[0:10]:
+            response_json = hackernews_datasource.get_story(ids)   
+            story.append(response_json['title'])
+            story.append(response_json['url'])
+            
+ 
+        # return 'title: {}\nurl:{}'.format(response_json['title'],response_json['url'])
+        return story

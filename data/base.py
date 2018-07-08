@@ -24,16 +24,16 @@ class Item(object):
     def __init__(self, data):
         self.data = data
         self.name = self.get_name()
-        # self.description = self.get_description()
+        self.description = self.get_description()
         # self.url = self.get_url()
 
     def get_name(self):
         """Returns a Name for item."""
         raise NotImplementedError()
 
-    # def get_description(self):
-    #     """Returns a desciption of the item."""
-    #     raise NotImplementedError()
+    def get_description(self):
+        """Returns a desciption of the item."""
+        raise NotImplementedError()
 
     # def get_url(self):
     #     """Return URL for the item."""
@@ -43,5 +43,4 @@ class Item(object):
     #     print('{name:30.30}|{description:50.50}|{url}'.format(
     #         name=self.name, description=self.description, url=self.url))
     def print_row(self):
-        print('{name:30.30}'.format(
-            name=self.name))
+        print self.description
