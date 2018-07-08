@@ -3,12 +3,14 @@ import argparse
 
 
 from data.datasources import giphy
-
+from data.datasources import hacker_news 
 
 def main(datasource, raw, file_dest):
     if not file_dest:
         if datasource == 'giphy':
             items = giphy.GiphyItems()
+        elif datasource == 'hacker_news':
+            items = hacker_news.HackerNewsItems()
         else:
             pass
         items.print_rows()
@@ -21,7 +23,7 @@ if __name__ == '__main__':
     parser.add_argument("datasource",
                         help="Choose a datasource",
                         action="store",
-                        choices=('giphy',))
+                        choices=('giphy','hacker_news'))
     parser.add_argument("--raw",
                         help="Display raw data instead of summary rows",
                         action="store_true",
