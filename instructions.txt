@@ -1,0 +1,20 @@
+Please ask any and all questions. We're a collaborative group here so any questions are welcomed and encouraged. Before you start, during, after, etc. We can arrange a call in fact if you'd like.
+
+Also, no real deadline. Once you take a look, just give us a heads up on when you think you'll be done so we can coordinate calendars on our side to review. Check in periodically so we know you are still around.
+
+Its a simple python app that lets you display data from an API to the screen. I did one integration to Giphy, so you can use that for reference.
+
+Once you checkout the repo, you can use the app by running
+
+python fetch_data.py giphy
+or
+python fetch_data.py -h 
+for help
+
+For the test I would like you to:
+Pull trending stories from Hacker News and display the data to screen.
+Implement the --display-raw option for showing the raw data instead of a summary row.
+Implement the --save option for saving the data to a CSV file.
+Take as long as you need for the project. Ask as many questions as you want; it will not reflect poorly. 
+
+Create a branch and do your work there. When you are done, create a pull request back into master. We'll schedule a code review to go over it.
