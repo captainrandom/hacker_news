@@ -19,8 +19,7 @@ class HackerNewsDatasource(object):
         response = requests.get(
             'https://hacker-news.firebaseio.com/v0/item/{}.json'.format(id)
         )
-        response_json = response.json()
-        return response_json
+        return response.json()
        # return response.json()
     def get_top_stories(self):
         """Fetches and returns top stories."""
@@ -49,10 +48,7 @@ class HackerNewsItems(Items):
         hackernews_datasource = HackerNewsDatasource()
         response_json = hackernews_datasource.get_topstory_ids()
         for ids in response_json[0:10]:
-            response_json = hackernews_datasource.get_story(ids)   
-            story.append(response_json['title'])
-            story.append(response_json['url'])
-            
- 
+            response_json = hackernews_datasource.get_story(ids) 
+            story.append(response_json)
         # return 'title: {}\nurl:{}'.format(response_json['title'],response_json['url'])
         return story

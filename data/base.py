@@ -12,10 +12,11 @@ class Items(object):
         """Returns a list of data from thrid party."""
         raise NotImplementedError()
 
-    def print_rows(self):
+    def print_rows(self, *raw):
+        # print 'reached rows'
         for item_data in self.data:
             item = self.item_cls(item_data)
-            item.print_row()
+            item.print_row(raw)
 
 
 class Item(object):
@@ -42,5 +43,10 @@ class Item(object):
     # def print_row(self):
     #     print('{name:30.30}|{description:50.50}|{url}'.format(
     #         name=self.name, description=self.description, url=self.url))
-    def print_row(self):
-        print self.description
+    def print_row(self,raw):
+        # url = self.description['url']
+        # print 'reached row'
+        if not raw:
+            print 'title: ' + self.description['title']
+        else: 
+            print self.description

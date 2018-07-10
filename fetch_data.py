@@ -13,7 +13,11 @@ def main(datasource, raw, file_dest):
             items = hacker_news.HackerNewsItems()
         else:
             pass
-        items.print_rows()
+        if raw:
+            print 'raw'
+            items.print_rows(raw)
+        else:
+            items.print_rows()
     else:
         print('Saving to CSV is not implemented.')
 
