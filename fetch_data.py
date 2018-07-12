@@ -19,6 +19,8 @@ def main(datasource, raw, file_dest):
         else:
             items.print_rows()
     else:
+        items = hacker_news.HackerNewsItems()
+        items.save_csv(file_dest)
         print('Saving to CSV is not implemented.')
 
 

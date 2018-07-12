@@ -52,3 +52,4 @@ class HackerNewsItems(Items):
             story.append(response_json)
         # return 'title: {}\nurl:{}'.format(response_json['title'],response_json['url'])
         return story
+

@@ -18,6 +18,20 @@ class Items(object):
             item = self.item_cls(item_data)
             item.print_row(raw)
 
+    def save_csv(self, file_dest):
+        download_dir = file_dest
+        csv = open(download_dir, "w") 
+        for key in self.data[0].keys():
+            row =  key + ","
+            csv.write(row)
+        csv.write("\n")
+        for item in self.data:
+            for val in item.values():
+                print val
+                row = str(val) + ","
+                csv.write(row)
+            csv.write("\n")
+              
 
 class Item(object):
     """Represent a Data item form thrid parties."""
@@ -27,7 +41,6 @@ class Item(object):
         self.name = self.get_name()
         self.description = self.get_description()
         # self.url = self.get_url()
-
     def get_name(self):
         """Returns a Name for item."""
         raise NotImplementedError()
@@ -35,6 +48,7 @@ class Item(object):
     def get_description(self):
         """Returns a desciption of the item."""
         raise NotImplementedError()
+
 
     # def get_url(self):
     #     """Return URL for the item."""
