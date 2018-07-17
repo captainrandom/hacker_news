@@ -39,3 +39,4 @@ class GiphyItems(Items):
         giphy_datasource = GiphyDatasource()
         response_json = giphy_datasource.get_trending_gifs()
         return response_json['data']
+
