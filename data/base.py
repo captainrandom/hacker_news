@@ -27,8 +27,15 @@ class Items(object):
         csv.write("\n")
         for item in self.data:
             for val in item.values():
-                print val
-                row = str(val) + ","
+                if isinstance(val, (list)):
+                    val = str(val)
+                    val = ''.join(i for i in val.split(','))
+                    val = repr(val).encode('utf-8')
+                elif isinstance(val, int):
+                    val = repr(val).encode('utf-8')
+                else:
+                    val = val.encode('utf-8')
+                row = str(val) + ','
                 csv.write(row)
             csv.write("\n")
               
